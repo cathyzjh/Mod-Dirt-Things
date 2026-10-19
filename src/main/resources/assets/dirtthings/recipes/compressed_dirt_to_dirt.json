@@ -1,0 +1,12 @@
+{
+  "type": "forge:ore_shapeless",
+  "ingredients": [
+    {
+      "item": "dirtthings:compressed_dirt"
+    }
+  ],
+  "result": {
+    "item": "minecraft:dirt",
+    "count": 4
+  }
+}

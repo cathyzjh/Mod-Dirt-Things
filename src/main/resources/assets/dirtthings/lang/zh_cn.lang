@@ -1,0 +1,9 @@
+item.dirtthings.dirt_ball.name=泥土球
+tile.dirtthings.compressed_dirt.name=压缩泥土
+tile.dirtthings.dirt_maker.name=泥土制作机
+container.dirtthings.dirt_maker=泥土制作机
+itemGroup.dirtthings=泥土工艺
+item.dirtthings.dirt_helmet.name=泥土头盔
+item.dirtthings.dirt_chestplate.name=泥土胸甲
+item.dirtthings.dirt_leggings.name=泥土护腿
+item.dirtthings.dirt_boots.name=泥土靴子

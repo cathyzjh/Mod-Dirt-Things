@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "dirtthings:items/dirt_helmet",
+    "layer1": "dirtthings:items/dirt_helmet_overlay"
+  }
+}

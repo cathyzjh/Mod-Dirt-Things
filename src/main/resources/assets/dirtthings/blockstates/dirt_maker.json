@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "dirtthings:dirt_maker" },
+    "facing=south": { "model": "dirtthings:dirt_maker", "y": 180 },
+    "facing=west": { "model": "dirtthings:dirt_maker", "y": 270 },
+    "facing=east": { "model": "dirtthings:dirt_maker", "y": 90 }
+  }
+}

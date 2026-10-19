@@ -1,0 +1,9 @@
+item.dirtthings.dirt_ball.name=Dirt Ball
+tile.dirtthings.compressed_dirt.name=Compressed Dirt
+tile.dirtthings.dirt_maker.name=Dirt Maker
+container.dirtthings.dirt_maker=Dirt Maker
+itemGroup.dirtthings=Dirt Things
+item.dirtthings.dirt_helmet.name=Dirt Helmet
+item.dirtthings.dirt_chestplate.name=Dirt Chestplate
+item.dirtthings.dirt_leggings.name=Dirt Leggings
+item.dirtthings.dirt_boots.name=Dirt Boots

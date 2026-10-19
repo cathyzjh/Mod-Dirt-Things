@@ -1,0 +1,16 @@
+[
+{
+  "modid": "dirtthings",
+  "name": "Dirt Things",
+  "description": "Adds dirt-related items and blocks.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Donny"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

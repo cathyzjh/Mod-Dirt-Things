@@ -1,0 +1,4 @@
+export JAVA_HOME="/Users/zhangjinghui/Library/Java/JavaVirtualMachines/corretto-1.8.0_504/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+cd /Users/zhangjinghui/Desktop/Mod
+./gradlew runServer
