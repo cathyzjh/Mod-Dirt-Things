@@ -15,12 +15,14 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 @Mod.EventBusSubscriber(modid = DirtThings.MODID)
 public final class DirtMakerRecipes {
     private static List<DirtMakerRecipe> cachedRecipes;
+    private static int cachedRegistrySize = -1;
 
     private DirtMakerRecipes() {
     }
 
     public static List<DirtMakerRecipe> getAll() {
-        if (cachedRecipes != null) {
+        int registrySize = ForgeRegistries.RECIPES.getValuesCollection().size();
+        if (cachedRecipes != null && cachedRegistrySize == registrySize) {
             return cachedRecipes;
         }
         List<DirtMakerRecipe> recipes = new ArrayList<>();
@@ -30,12 +32,14 @@ public final class DirtMakerRecipes {
             }
         }
         cachedRecipes = Collections.unmodifiableList(recipes);
+        cachedRegistrySize = registrySize;
         return cachedRecipes;
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onRecipeRegistry(RegistryEvent.Register<IRecipe> event) {
         cachedRecipes = null;
+        cachedRegistrySize = -1;
     }
 
     public static DirtMakerRecipe find(ItemStack input) {
