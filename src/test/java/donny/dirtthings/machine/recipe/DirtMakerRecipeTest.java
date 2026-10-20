@@ -145,6 +145,41 @@ public class DirtMakerRecipeTest {
     }
 
     @Test
+    public void dirtMakerCraftingRequiresDirtPistonAndFurnaceInOrder() throws Exception {
+        try (Reader reader = new InputStreamReader(getClass().getResourceAsStream(
+                "/assets/dirtthings/recipes/dirt_maker.json"), StandardCharsets.UTF_8)) {
+            JsonObject json = new JsonParser().parse(reader).getAsJsonObject();
+            assertEquals("dirtthings:dirt_maker", json.getAsJsonObject("result").get("item").getAsString());
+            // Substitute only the output item to test without a running mod loader.
+            json.getAsJsonObject("result").addProperty("item", "minecraft:furnace");
+            IRecipe recipe = CraftingHelper.getRecipe(json, new JsonContext("dirtthings"));
+            InventoryCrafting grid = new InventoryCrafting(new Container() {
+                @Override
+                public boolean canInteractWith(EntityPlayer player) {
+                    return true;
+                }
+            }, 3, 3);
+            net.minecraft.block.Block[] blocks = {
+                    Blocks.DIRT, Blocks.DIRT, Blocks.DIRT,
+                    Blocks.COBBLESTONE, Blocks.PISTON, Blocks.COBBLESTONE,
+                    Blocks.COBBLESTONE, Blocks.FURNACE, Blocks.COBBLESTONE
+            };
+            for (int slot = 0; slot < blocks.length; slot++) {
+                grid.setInventorySlotContents(slot, new ItemStack(blocks[slot]));
+            }
+            assertTrue(recipe.matches(grid, null));
+            assertEquals(1, recipe.getCraftingResult(grid).getCount());
+            grid.setInventorySlotContents(4, new ItemStack(Blocks.FURNACE));
+            grid.setInventorySlotContents(7, new ItemStack(Blocks.PISTON));
+            assertFalse("Swapped piston and furnace must not match", recipe.matches(grid, null));
+            grid.setInventorySlotContents(4, new ItemStack(Blocks.PISTON));
+            grid.setInventorySlotContents(7, new ItemStack(Blocks.FURNACE));
+            grid.setInventorySlotContents(0, new ItemStack(Blocks.DIRT, 1, 1));
+            assertFalse("Coarse dirt must not replace ordinary dirt", recipe.matches(grid, null));
+        }
+    }
+
+    @Test
     public void allArmorRecipesMatchVanillaArmorShapesUsingOrdinaryDirt() throws Exception {
         String[] names = {"dirt_helmet", "dirt_chestplate", "dirt_leggings", "dirt_boots"};
         String[][] patterns = {
