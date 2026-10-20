@@ -85,4 +85,18 @@ public class DirtMakerRecipeTest {
         json.getAsJsonObject("result").addProperty("count", 65);
         parse(json);
     }
+
+    @Test
+    public void ordinaryCraftingRecipesLoadWithMetadata() throws Exception {
+        for (String name : new String[]{"compressed_dirt1", "compressed_dirt_to_dirt"}) {
+            try (Reader reader = new InputStreamReader(getClass().getResourceAsStream(
+                    "/assets/dirtthings/recipes/" + name + ".json"), StandardCharsets.UTF_8)) {
+                String text = new JsonParser().parse(reader).toString()
+                        .replace("dirtthings:compressed_dirt", "minecraft:clay");
+                JsonObject json = new JsonParser().parse(text).getAsJsonObject();
+                assertFalse(CraftingHelper.getRecipe(json, new JsonContext("dirtthings"))
+                        .getRecipeOutput().isEmpty());
+            }
+        }
+    }
 }

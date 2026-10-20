@@ -33,7 +33,9 @@ minecraft {
     mappings channel: 'snapshot', version: '20171003-1.12'
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 
-    // accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+    // Apply JEI's required access changes to the mapped development Minecraft jar.
+    // Kept outside resources: production JEI provides its own access transformer.
+    accessTransformer = file('config/jei-dev_at.cfg')
 
     // Default run configurations.
     // These can be tweaked, removed, or duplicated as needed.
@@ -69,6 +71,7 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2859'
     compileOnly fg.deobf('mezz.jei:jei_1.12.2:4.16.1.302:api')
+    runtimeOnly fg.deobf('mezz.jei:jei_1.12.2:4.16.1.302')
     testImplementation 'junit:junit:4.13.2'
 
     // You may put jars on which you depend on in ./libs or you may define them like so..
@@ -89,6 +92,13 @@ dependencies {
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
 
+}
+
+test {
+    workingDir = file("$buildDir/test-run")
+    doFirst {
+        workingDir.mkdirs()
+    }
 }
 
 // Example for how to get properties into the manifest for reading by the runtime..

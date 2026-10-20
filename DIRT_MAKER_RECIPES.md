@@ -21,5 +21,12 @@ Avoid overlapping input definitions. Fuel uses vanilla furnace burn times.
 
 Recipes never match crafting grids or enter the vanilla recipe book. JEI is an
 optional client integration: it displays inputs, outputs, and time in a custom
-category. No recipe transfer or GUI click shortcut is registered. Install JEI
-1.12.2 separately to test the display; the JEI API is not bundled in this mod.
+category. No recipe transfer or GUI click shortcut is registered. Gradle supplies
+JEI 4.16.1.302 for development runs; do not place another JEI jar in `run/mods/`.
+`config/jei-dev_at.cfg` applies JEI's access changes to the development Minecraft
+jar. Neither JEI nor this development-only access transformer is bundled in the
+mod. Players install JEI separately if they want recipe display.
+
+After changing access-transformer rules or importing a fresh checkout, run
+`./gradlew eclipse` once to generate the corresponding Forge development sources,
+then `./gradlew runClient`. Use a 64-bit JDK 8 for this legacy project.
