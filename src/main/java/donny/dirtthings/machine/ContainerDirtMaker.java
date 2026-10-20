@@ -14,11 +14,17 @@ public class ContainerDirtMaker extends Container {
     private int burnTime;
     private int fuelTime;
     private int cookTime;
+    private int processingTime;
 
     public ContainerDirtMaker(InventoryPlayer playerInventory, TileEntityDirtMaker machine) {
         this.machine = machine;
 
-        addSlotToContainer(new Slot(machine, 0, 56, 17));
+        addSlotToContainer(new Slot(machine, 0, 56, 17) {
+            @Override
+            public boolean isItemValid(ItemStack stack) {
+                return machine.isItemValidForSlot(0, stack);
+            }
+        });
         addSlotToContainer(new Slot(machine, 1, 56, 53) {
             @Override
             public boolean isItemValid(ItemStack stack) {
@@ -44,6 +50,7 @@ public class ContainerDirtMaker extends Container {
         listener.sendWindowProperty(this, 0, machine.getField(0));
         listener.sendWindowProperty(this, 1, machine.getField(1));
         listener.sendWindowProperty(this, 2, machine.getField(2));
+        listener.sendWindowProperty(this, 3, machine.getField(3));
     }
 
     @Override
@@ -59,10 +66,14 @@ public class ContainerDirtMaker extends Container {
             if (cookTime != machine.getField(2)) {
                 listener.sendWindowProperty(this, 2, machine.getField(2));
             }
+            if (processingTime != machine.getField(3)) {
+                listener.sendWindowProperty(this, 3, machine.getField(3));
+            }
         }
         burnTime = machine.getField(0);
         fuelTime = machine.getField(1);
         cookTime = machine.getField(2);
+        processingTime = machine.getField(3);
     }
 
     @Override

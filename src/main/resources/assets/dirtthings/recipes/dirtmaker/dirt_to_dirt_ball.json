@@ -1,0 +1,13 @@
+{
+  "type": "dirtthings:dirt_maker",
+  "ingredient": {
+    "item": "minecraft:dirt",
+    "data": 0,
+    "count": 1
+  },
+  "result": {
+    "item": "dirtthings:dirt_ball",
+    "count": 2
+  },
+  "processing_time": 200
+}
