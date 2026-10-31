@@ -12,6 +12,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import java.util.Objects;
+
 @Mod.EventBusSubscriber(modid = DirtThings.MODID)
 public final class ToolRegistryHandler {
     public static final Item DIRT_SWORD = configure(new ItemDirtSword(), "dirt_sword");
@@ -46,6 +48,6 @@ public final class ToolRegistryHandler {
     @SideOnly(Side.CLIENT)
     private static void registerModel(Item item) {
         ModelLoader.setCustomModelResourceLocation(item, 0,
-                new ModelResourceLocation(item.getRegistryName(), "inventory"));
+                new ModelResourceLocation(Objects.requireNonNull(item.getRegistryName()), "inventory"));
     }
 }

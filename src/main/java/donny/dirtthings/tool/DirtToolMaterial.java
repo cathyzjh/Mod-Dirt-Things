@@ -21,7 +21,9 @@ public final class DirtToolMaterial {
                 wood.getEfficiency(),
                 wood.getAttackDamage(),
                 wood.getEnchantability());
-        dirt.setRepairItem(new ItemStack(Blocks.DIRT, 1, 0));
+        if (dirt != null) {
+            dirt.setRepairItem(new ItemStack(Blocks.DIRT, 1, 0));
+        }
         return dirt;
     }
 }
