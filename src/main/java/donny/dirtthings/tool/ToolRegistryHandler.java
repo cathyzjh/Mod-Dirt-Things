@@ -20,6 +20,7 @@ public final class ToolRegistryHandler {
     public static final Item DIRT_PICKAXE = configure(new ItemDirtPickaxe(), "dirt_pickaxe");
     public static final Item DIRT_AXE = configure(new ItemDirtAxe(), "dirt_axe");
     public static final Item DIRT_HOE = configure(new ItemDirtHoe(), "dirt_hoe");
+    public static final Item DIRT_SHOVEL = configure(new ItemDirtShovel(), "dirt_shovel");
 
     private ToolRegistryHandler() {
     }
@@ -33,7 +34,7 @@ public final class ToolRegistryHandler {
 
     @SubscribeEvent
     public static void onItemRegistry(RegistryEvent.Register<Item> event) {
-        event.getRegistry().registerAll(DIRT_SWORD, DIRT_PICKAXE, DIRT_AXE, DIRT_HOE);
+        event.getRegistry().registerAll(DIRT_SWORD, DIRT_PICKAXE, DIRT_AXE, DIRT_HOE, DIRT_SHOVEL);
     }
 
     @SubscribeEvent
@@ -43,6 +44,7 @@ public final class ToolRegistryHandler {
         registerModel(DIRT_PICKAXE);
         registerModel(DIRT_AXE);
         registerModel(DIRT_HOE);
+        registerModel(DIRT_SHOVEL);
     }
 
     @SideOnly(Side.CLIENT)

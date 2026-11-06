@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "D",
+    "S",
+    "S"
+  ],
+  "key": {
+    "D": { "item": "minecraft:dirt", "data": 0 },
+    "S": { "item": "minecraft:stick" }
+  },
+  "result": {
+    "item": "dirtthings:dirt_shovel",
+    "count": 1
+  }
+}
