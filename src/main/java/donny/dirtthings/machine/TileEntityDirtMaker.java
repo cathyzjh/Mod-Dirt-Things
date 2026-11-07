@@ -13,6 +13,7 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ITickable;
 import net.minecraft.util.NonNullList;
 
+@SuppressWarnings("NullableProblems")
 public class TileEntityDirtMaker extends TileEntity implements IInventory, ITickable {
     public static final int PROCESS_TIME = 200;
     private NonNullList<ItemStack> inventory = NonNullList.withSize(3, ItemStack.EMPTY);
@@ -120,9 +121,8 @@ public class TileEntityDirtMaker extends TileEntity implements IInventory, ITick
     @Override
     public ItemStack decrStackSize(int index, int count) {
         ItemStack removed = ItemStackHelper.getAndSplit(inventory, index, count);
-        if (!removed.isEmpty()) {
+        if (!removed.isEmpty())
             markDirty();
-        }
         return removed;
     }
 
