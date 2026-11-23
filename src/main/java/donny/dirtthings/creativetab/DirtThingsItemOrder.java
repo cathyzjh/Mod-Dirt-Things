@@ -1,11 +1,12 @@
 package donny.dirtthings.creativetab;
 
 import donny.dirtthings.DirtThings;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 
 /** Controls display order only; item registry IDs and saved inventories are unchanged. */
 public final class DirtThingsItemOrder {
